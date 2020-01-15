@@ -1,11 +1,4 @@
 const mysql = require("mysql");
-const express = require("express");
-const exphbs = require("express-handlebars");
-
-var app = express();
-
-var PORT = process.env.PORT || 8080;
-
 
 var connection = mysql.createConnection({
     host: "localhost",
