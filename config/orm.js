@@ -9,14 +9,14 @@ var orm = {
         });
     },
     insertOne: function (table, value, cb) {
-        var queryString = "INSERT INTO " + table + " (burger_name) VALUES (" + "value" + ");";
+        var queryString = "INSERT INTO " + table + " (burger_name) VALUES (" + value + ");";
         connection.query(queryString, function (err, result) {
             if (err) throw err;
             cb(result);
         });
     },
-    updateOne: function (table, val, cb) {
-        var queryString = "UPDATE " + table + " SET devoured=true WHERE id=" + val + ";";
+    updateOne: function (table, value, cb) {
+        var queryString = "UPDATE " + table + " SET devoured=true WHERE id=" + value + ";";
         connection.query(queryString, function(err,result){
             if (err) throw err;
             cb(result);
