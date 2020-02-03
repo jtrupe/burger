@@ -6,12 +6,15 @@ var burger = require("../models/burger.js");
 
 router.get("/", function (req, res) {
     burger.all(function (burger_data) {
+        var hbsObject={
+            burger_data
+        }
         console.log(burger_data);
-        res.render('index');
+        res.render('index', hbsObject);
     });
 });
-router.put("/burgers/devour", function (req, res) {
-    burger.update(req.body.id, function(result){
+router.post("/burgers/devour/:id", function (req, res) {
+    burger.update(req.params.id, function(result){
         console.log(result);
         res.redirect("/");
     });
@@ -22,5 +25,4 @@ router.post("/burgers/new", function (req, res) {
         res.redirect("/");
     });
 });
-
 module.exports = router;

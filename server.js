@@ -1,10 +1,12 @@
 const express = require("express");
 const exphbs = require("express-handlebars");
 
+
 var app = express();
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 
+// app.use(methodOverride("_method"));
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
@@ -13,7 +15,7 @@ app.set("view engine", "handlebars");
 
 var routes = require("./controllers/burgers_controller.js");
 
-app.use('/',routes); 
+app.use(routes); 
 
 var PORT = process.env.PORT || 8080;
 

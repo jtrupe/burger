@@ -1,11 +1,9 @@
-<p> Succesffully connected to server</p>
-
-{{!-- <div class= "addContainer">
+<div class="addContainer">
     <h1>Add a Burger!</h1>
-    <form>
+    <form action="/burgers/new" method="POST">
         <div class="form-group">
-            <input class="form-control" id="addBurger" type="text">
-            <button class="btn btn-danger" id="newBurger" type="submit">Add!</button>
+            <input class="form-control" name="burger_name" id="newBurger" type="text">
+            <button class="btn btn-danger" id="addBurger" type="submit">Add!</button>
         </div>
     </form>
 </div>
@@ -15,24 +13,25 @@
         <h1>Eat a Burger</h1>
     </div>
     {{#each burger_data}}
-    {{#unless this.devoured}}
+    {{#unless devoured}}
     <div class=burgerDiv>
         <span>
-            <h3> {{this.id}}. {{this.burger_name}} </h3>
-            <form method="POST" action="/burgers/devour?_method=PUT">
+            <pre>{{this.id}}. {{this.burger_name}}</pre>
+            <form action="burgers/devour/{{this.id}}" method="POST">
                 <input type="hidden" name="burger_id" type="text" value={{this.id}}>
-                <button type="submit" class="btn btn-primary">DEVOUR IT!</button>
+                <button type="submit" class="btn btn-primary" class="devour">DEVOUR IT!</button>
             </form>
         </span>
     </div>
     {{/unless}}
     {{/each}}
+
     <div class="devouredDiv">
         <h2>Devoured Burgers: </h2>
         {{#each burger_data}}
-        {{#if this.devoured}}
+        {{#if devoured}}
         <p>{{this.burger_name}}</p>
         {{/if}}
         {{/each}}
     </div>
-</div> --}}
+</div>
